@@ -14,7 +14,7 @@
 
 也可以修改`debug提示符`后在执行上面的语句：
 
-`export PS4='+\e[01;32m[${BASH_SOURCE}:${FUNCNAME[0]}:${LINENO}]\e[00m'`
+`export PS4='+\e[01;32m[${BASH_SOURCE}:${FUNCNAME[0]}:${LINENO}]\e[00m '`
 
 2. 部分执行过程
 

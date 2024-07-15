@@ -1,5 +1,7 @@
 # TestShell
 
+shell有多种，常用shell有`bash`、`sh`、`zsh`等。
+
 ### 1. 执行脚本
 
 `./x.sh`

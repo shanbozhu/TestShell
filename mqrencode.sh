@@ -2,7 +2,7 @@
 # usage:
 # ./mqrencode.sh "字符串"
 
-# 命令是否安装
+# 命令是否已安装
 cmd="qrencode"
 if ! which $cmd &> /dev/null; then
   echo "qrencode 未安装，正在安装..."

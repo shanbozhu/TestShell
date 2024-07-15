@@ -11,7 +11,7 @@ shell有多种，常用shell有`bash`、`sh`、`zsh`等。
 
 ### 2. 执行脚本并打印执行过程
 
-1. 全部执行过程
+1. 打印全部执行过程
 
 `bash -x x.sh`
 
@@ -19,7 +19,7 @@ shell有多种，常用shell有`bash`、`sh`、`zsh`等。
 
 `export PS4='+\e[01;32m[${BASH_SOURCE}:${FUNCNAME[0]}:${LINENO}]\e[00m '`
 
-2. 部分执行过程
+2. 打印部分执行过程
 
 代码中加`set -x`开头和`set +x`结尾，然后执行`./x.sh`或`bash x.sh`，中间部分的代码打印执行过程
 

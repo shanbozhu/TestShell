@@ -1,0 +1,4 @@
+*.ipa
+*.zip
+share/*
+common/Payload

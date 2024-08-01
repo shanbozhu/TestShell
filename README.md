@@ -54,4 +54,16 @@ shell脚本中加`set -x`开头和`set +x`结尾，然后执行`bash x.sh`，中
 
 将这些选项结合起来使用，可以显著提高脚本的可靠性和可维护性。
 
-常见的组合：`set -euo pipefail`。这将确保脚本在遇到错误、使用未定义变量或管道失败时立即退出。
+推荐在写shell脚本时，开头加上`set -euo pipefail`。这将确保脚本在遇到错误、使用未定义变量或管道失败时立即退出。
+
+```
+#!/bin/bash
+
+set -e
+set -u
+set -o pipefail
+或者
+set -euo pipefail
+
+# Your script here
+```

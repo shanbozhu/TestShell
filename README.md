@@ -38,6 +38,8 @@ shell脚本中加`set -x`开头和`set +x`结尾，然后执行`bash x.sh`，中
 
 `bash -c "echo 'Hello'"`
 
+`bash -c "$(curl -fsSL http://x.sh)"`
+
 -c后面的字符串通常可以从网络下载
 
 ### 6. set命令常用选项

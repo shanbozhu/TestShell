@@ -21,7 +21,7 @@ suffix=".png"
 file_path="${prefix}/${time}${suffix}"
 
 # 目录是否存在
-if [[ ! -d "$prefix" ]]; then
+if [[ ! -d $prefix ]]; then
   echo "目录 $prefix 不存在，正在创建..."
   mkdir -p "$prefix"
   if [[ $? -eq 0 ]]; then
@@ -33,12 +33,12 @@ if [[ ! -d "$prefix" ]]; then
 fi
 
 # 生成二维码
-qrencode -o $file_path -s 10 -m 1 $1
+qrencode -o "$file_path" -s 10 -m 1 "$1"
 if [[ $? -eq 0 ]]; then
   echo "二维码生成成功，已自动打开保存的目录。"
 else
   echo "二维码生成失败，请重试。"
   exit 1
 fi
-open ${prefix}
-#open ${file_path}
+open "$prefix"
+open "$file_path"

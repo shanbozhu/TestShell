@@ -25,20 +25,28 @@ echo "$c"
 
 # 数组
 a=(29 100 13 8 91 44)
-echo "${a[*]}" # 输出所有元素
+echo "${a[@]}" # 输出所有元素
+
 a=(20 56 "hello world")
-echo "${a[*]}" # 输出所有元素
+echo "${a[@]}" # 输出所有元素
+
+for icmd in "${a[@]}"; do
+  echo "$icmd" # 输出所有元素
+done
 
 ## 二、变量调用
-# 1)getter
+
+# 1)setter
+a=456
+# 2)getter
 echo "$a" # $等价于${}，表示取值
 echo "${a}"
-echo "`ls -l`" # ``等价于$()，表示执行命令
+echo "`ls -l`" # ``等价于$()，表示执行命令并捕获输出
 echo "$(ls -l)"
-# 2)setter
-a=456
+
 
 ## 三、特殊变量
+
 # 1)脚本或函数的参数：$1、$2、...、${10}、${11}、...、${n}
 # 2)脚本文件名：$0
 # 3)脚本或函数的参数个数：$#
@@ -47,14 +55,17 @@ a=456
 # 6)当前shell进程ID：$$
 
 ## 四、字符串处理
+
 # 1)字符串长度：${#string_name}
 str="hello world"
 echo "${#str}"
+
 # 2)字符串拼接：${string_name1}${string_name2}
 str1=hello
 str2=world
 str3=${str1}${str2}
 echo "$str3"
+
 # 3)字符串截取
 str="hello world"
 # 3.1)${string: index: length}或${string: 0-index: length}
@@ -70,6 +81,7 @@ echo "${str%l*}" # 截取最后一个l*左边的所有字符，*是通配符
 echo "${str%%l*}" # 截取最前一个l*左边的所有字符，*是通配符
 
 ## 五、数组
+
 arr1=(29 100 13 8 91 44)
 arr2=(20 56 "hello world")
 echo "${arr1[1]}" # 输出索引为1的元素
@@ -105,6 +117,7 @@ echo "$((3 == 3 && 3 < 8 && 3 < 6))" # 输出1表示真
 echo "$?" # 输出0，表示上一个命令执行成功，退出状态为0。上一个命令执行失败，退出状态为非0，一般为1
 
 ## 七、控制语句
+
 # ---------------- 判断
 
 # (()) 对整型进行关系运算，可以使用==等符号，$可省略。
@@ -215,8 +228,8 @@ case $str in # 这里的str是取值操作，所以需要加$
 esac
 
 # 3、select语句
-read -p "请输入a的值:" a # 从键盘读取数据赋值给a，按Ctrl+D组合键结束读取
-read -p "请输入b的值:" b
+read -rp "请输入a的值:" a # 从键盘读取数据赋值给a，按Ctrl+D组合键结束读取
+read -rp "请输入b的值:" b
 if ((a == b)); then # ;分号是命令连接符，多个命令写在同一行需要加分号，写在不同行不需要加
     echo "a和b相等!"
 else
@@ -255,6 +268,7 @@ done
 echo "You have selected $name"
 
 # ---------------- 循环
+
 # 1、while语句
 i=1
 sum=0
@@ -360,27 +374,9 @@ for ((i=1; i <= 5; i++)); do
 done
 
 ## 八、函数
-function getsum() {
-    number=55 # 无论写在函数内，还是函数外，都是全局变量
-    for n in $@
-    do
-        ((number += n))
-    done
-    
-    local add=0 # 此种写法是局部变量，local只能使用在函数内
-    for n in $@
-    do
-        ((add += n))
-    done
-    return $add # 不推荐此种写法将结果返回
-}
-getsum 10 20 30 40 50;
-echo "$?" # 150。$?表示函数退出状态，一般返回0表示成功，1表示失败。
-echo "$add" # add未定义
-echo "$number" # 205
-echo "$?" # 0
 
 function getsum() {
+    number=55 # 无论写在函数内，还是函数外，都是全局变量
     echo "$0" # /Users/zhushanbo/Desktop/Test/TestShell/Test/day1/test1.sh
 
     local add=0
@@ -392,7 +388,19 @@ function getsum() {
     return 0 # 推荐写法
 }
 getsum 10 20 # -30
-reduce=$(getsum 10 20)
+reduce=$(getsum 10 20) # 调用函数并捕获输出
 echo "$reduce" # -30
 echo "$(getsum 10 20)" # -30
 echo "`getsum 10 20`" # -30
+echo "$number" # 55
+
+get_file_size() {
+    if [[ "$(uname)" == "Darwin" ]] || [[ "$(uname)" == "FreeBSD" ]]; then
+        stat -f%z "$1"
+    else
+        stat -c%s "$1"
+    fi
+}
+# 调用函数并捕获输出
+size=$(get_file_size "$0")
+echo "File size: $size bytes"

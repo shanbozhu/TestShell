@@ -31,7 +31,10 @@ a=(20 56 "hello world")
 echo "${a[@]}" # 输出所有元素
 
 for icmd in "${a[@]}"; do
-  echo "$icmd" # 输出所有元素
+  echo "独立输出所有元素：$icmd" # 独立输出所有元素
+done
+for icmd in "${a[*]}"; do
+  echo "整体输出所有元素：$icmd" # 整体输出所有元素
 done
 
 ## 二、变量调用

@@ -1,6 +1,6 @@
 #!/bin/bash
 # usage:
-# ./mqrencode.sh "字符串"
+# ./mqrencode.sh args
 
 # 命令是否已安装
 cmd="qrencode"
@@ -33,7 +33,9 @@ if [[ ! -d $prefix ]]; then
 fi
 
 # 生成二维码
-qrencode -o "$file_path" -s 10 -m 1 "$1"
+#qrencode -o "$file_path" -s 10 -m 1 "$1"
+#qrencode -o "$file_path" -s 10 -m 1 "$@"
+qrencode -o "$file_path" -s 10 -m 1 "$*"
 if [[ $? -eq 0 ]]; then
   echo "二维码生成成功，已自动打开保存的目录。"
 else

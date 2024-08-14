@@ -64,7 +64,11 @@ echo "${#str}"
 str1=hello
 str2=world
 str3=${str1}${str2}
-echo "$str3"
+echo "----$str3" # ----helloworld
+str4="${str1} ${str2}"
+echo "----$str4" # ----hello world
+str5="${str1}""${str2}"
+echo "----$str5" # ----helloworld
 
 # 3)字符串截取
 str="hello world"

@@ -3,7 +3,7 @@
 ## 一、变量定义
 
 # 整型
-a=123
+a=123 # 等号两边不能有空格
 echo "$a"
 readonly d=123 # 只读变量
 
@@ -127,8 +127,8 @@ echo "$?" # 输出0，表示上一个命令执行成功，退出状态为0。上
 
 # ---------------- 判断
 
-# (()) 对整型进行关系运算，可以使用==等符号，$可省略。
-# [[]] 对整型和字符串进行关系运算，对整型运算时需要使用-eq等选项，对字符串运算时需要使用==符号。
+# (()) 对整型进行关系运算，使用==等符号，$可省略。
+# [[]] 对整型和字符串进行关系运算，对整型运算时使用-eq等选项，对字符串运算时使用==符号。
 
 # 1、if语句
 num1=10
@@ -145,7 +145,7 @@ fi
 # -lt：小于（less than）
 # -ge：大于等于（greater than or equal to）
 # -le：小于等于（less than or equal to）
-if [[ $num1 -gt $num2 ]]; then
+if [[ $num1 -gt $num2 ]]; then # [[]] 中的$var不用加双引号
     echo "num1大于num2"
 else
     echo "num1小于等于num2"
@@ -169,6 +169,18 @@ else
 fi
 
 # 字符串比较是从左至右逐个比较字符对应的ASCII码
+if [[ $str1 == $str2 ]]; then
+    echo "str1等于str2!"
+else
+    echo "str1不等于str2!"
+fi
+
+if [[ $str1 != $str2 ]]; then
+    echo "str1不等于str2!"
+else
+    echo "str1等于str2!"
+fi
+
 if [[ $str1 > $str2 ]]; then
     echo "str1大于str2!"
 else
@@ -179,18 +191,6 @@ if [[ $str1 < $str2 ]]; then
     echo "str1小于str2!"
 else
     echo "str1大于等于str2!"
-fi
-
-if [[ $str1 == $str2 ]]; then
-    echo "str1 == str2!"
-else
-    echo "str1 != str2!"
-fi
-
-if [[ $str1 != $str2 ]]; then
-    echo "str1不等于str2!"
-else
-    echo "str1等于str2!"
 fi
 
 num1=20
@@ -395,7 +395,7 @@ function getsum() {
     echo "$0" # /Users/zhushanbo/Desktop/Test/TestShell/Test/day1/test1.sh
 
     local add=0
-    for n in $@
+    for n in "$@"
     do
         ((add -= n))
     done

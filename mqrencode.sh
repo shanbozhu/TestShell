@@ -41,4 +41,4 @@ else
   exit 1
 fi
 open "$prefix"
-open "$file_path"
+#open "$file_path"

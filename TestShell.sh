@@ -148,6 +148,7 @@ else
     echo "str1和str2至少有一个为空!"
 fi
 
+# 字符串比较是从左至右逐个比较字符对应的ASCII码
 if [[ $str1 > $str2 ]]; then
     echo "str1大于str2!"
 else

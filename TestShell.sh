@@ -211,6 +211,14 @@ else
     echo "文件不存在，或文件存在但是不拥有写权限"
 fi
 
+filename="/Users/zhushanbo/Desktop/Test/TestShell/helloworld.sh"
+if [[ ! -f $filename ]]
+then
+    echo "文件不存在"
+else
+    echo "文件存在"
+fi
+
 # 2、case语句
 str=b
 case $str in # 这里的str是取值操作，所以需要加$

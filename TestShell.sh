@@ -349,7 +349,7 @@ do
 done
 
 function func() {
-    for str in $@
+    for str in "$@"
     do
         echo "$str"
     done

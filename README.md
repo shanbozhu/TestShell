@@ -16,7 +16,7 @@ shell有多种，常用shell有`bash`、`sh`、`zsh`等。
 
 `bash -x x.sh`
 
-也可以修改`debug提示符`后在执行上面的语句：
+可以修改`debug提示符`后在执行上面的语句，打印详细信息：
 
 `export PS4='+\e[01;32m[${BASH_SOURCE}:${FUNCNAME[0]}:${LINENO}]\e[00m '`
 

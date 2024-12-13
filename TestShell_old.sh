@@ -61,12 +61,6 @@ else
     echo "str1小于等于str2!"
 fi
 
-if [[ "$str1" == "$str2" ]]; then
-    echo "str1 == str2!"
-else
-    echo "str1 != str2!"
-fi
-
 if [ "$str1" == "$str2" ]; then
     echo "str1 == str2!"
 else

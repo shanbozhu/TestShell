@@ -73,7 +73,7 @@ else
     echo "str1 != str2!"
 fi
 
-if [[ -n $str1 ]] && [[ -n $str2 ]]; then
+if [[ -n "$str1" ]] && [[ -n "$str2" ]]; then
     echo "str1和str2都不为空!"
 else
     echo "str1和str2至少有一个为空!"

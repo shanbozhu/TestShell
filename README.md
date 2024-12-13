@@ -32,6 +32,12 @@ shell脚本中加`set -x`开头和`set +x`结尾，然后执行`bash x.sh`，中
 
 `bashdb x.sh`
 
+或使用IDE：
+
+收费：`IDEA + BashSupport Pro`
+
+免费：`VSCode + Bash Debug`
+
 参考文档：https://yebd1h.smartapps.cn/pages/blog/index?blogId=127956803&_swebfr=1&_swebFromHost=bdlite
 
 ### 5. 在子shell中执行给定的字符串作为的命令

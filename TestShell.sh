@@ -25,10 +25,10 @@ echo "$c"
 
 # 数组
 a=(29 100 13 8 91 44)
-echo "${a[@]}" # 输出所有元素
+echo "${a[@]}" # 独立输出所有元素
 
 a=(20 56 "hello world")
-echo "${a[@]}" # 输出所有元素
+echo "${a[*]}" # 整体输出所有元素
 
 for icmd in "${a[@]}"; do
   echo "独立输出所有元素：$icmd" # 独立输出所有元素
@@ -36,6 +36,9 @@ done
 for icmd in "${a[*]}"; do
   echo "整体输出所有元素：$icmd" # 整体输出所有元素
 done
+
+# 字典
+# 无
 
 ## 二、变量调用
 
@@ -46,7 +49,6 @@ echo "$a" # $等价于${}，表示取值
 echo "${a}"
 echo "`ls -l`" # ``等价于$()，表示执行命令并捕获输出
 echo "$(ls -l)"
-
 
 ## 三、特殊变量
 
@@ -115,6 +117,7 @@ echo "$j"
 
 # 关系运算
 echo "$((3 < 8))" # 输出1表示真
+echo "$?" # 输出0，表示上一个命令执行成功，退出状态为0。上一个命令执行失败，退出状态为非0，一般为1
 echo "$((3 > 8))" # 输出0表示假
 echo "$?" # 输出0，表示上一个命令执行成功，退出状态为0。上一个命令执行失败，退出状态为非0，一般为1
 echo "$((3 == 3))" # 输出1表示真
@@ -392,7 +395,6 @@ done
 
 function getsum() {
     number=55 # 无论写在函数内，还是函数外，都是全局变量
-    echo "$0" # /Users/zhushanbo/Desktop/Test/TestShell/Test/day1/test1.sh
 
     local add=0
     for n in "$@"
@@ -403,7 +405,9 @@ function getsum() {
     return 0 # 推荐写法
 }
 getsum 10 20 # -30
-reduce=$(getsum 10 20) # 调用函数并捕获输出
+echo "$?" # 0
+reduce=$(getsum 10 20) # 调用函数并捕获echo输出
+echo "$?" # 0
 echo "$reduce" # -30
 echo "$(getsum 10 20)" # -30
 echo "`getsum 10 20`" # -30
@@ -411,11 +415,13 @@ echo "$number" # 55
 
 get_file_size() {
     if [[ "$(uname)" == "Darwin" ]] || [[ "$(uname)" == "FreeBSD" ]]; then
+        # 脚本或函数的参数：$1、$2、...、${10}、${11}、...、${n}
         stat -f%z "$1"
     else
         stat -c%s "$1"
     fi
 }
-# 调用函数并捕获输出
-size=$(get_file_size "$0")
+# 脚本文件名：$0
+echo "$0" # /Users/zhushanbo/Desktop/Test/TestShell/TestShell.sh
+size=$(get_file_size "$0") # 调用函数并捕获echo输出
 echo "File size: $size bytes"

@@ -343,7 +343,7 @@ while ((++i)); do
     printf "\n"
 done
 
-# 4、continue还可以后面加数字，继续下次多层循环
+# 4、continue后面还可以加数字，继续下次多层循环
 for ((i=1; i <= 5; i++)); do
     for ((j=1; j <= 5; j++)); do
         if ((i * j == 12)); then

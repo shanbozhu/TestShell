@@ -245,46 +245,6 @@ case $str in # 这里的str是取值操作，所以需要加$
         echo "error"
 esac
 
-# 3、select语句
-read -rp "请输入a的值:" a # 从键盘读取数据赋值给a，按Ctrl+D组合键结束读取
-read -rp "请输入b的值:" b
-if ((a == b)); then # ;分号是命令连接符，多个命令写在同一行需要加分号，写在不同行不需要加
-    echo "a和b相等!"
-else
-    echo "a和b不相等!"
-fi
-
-echo "what is your favourite OS?"
-select name in "Linux" "Windows" "Mac OS" "Android" "iOS"
-do
-    echo "$name"
-    case $name in # select一般与case搭配使用
-        "Linux")
-            echo "Linux是一个类UNIX操作系统，开源免费，一般运行在服务器和嵌入式设备"
-            break # 此break是跳出select语句，并不是跳出case语句，;;跳出case语句
-            ;;
-        "Windows")
-            echo "Windows是微软开发的操作系统，闭源收费，一般运行在个人电脑"
-            break
-            ;;
-        "Mac OS")
-            echo "Mac OS是苹果基于UNIX开发的操作系统，闭源收费，一般运行在苹果个人电脑"
-            break
-            ;;
-        "Android")
-            echo "Android是谷歌开发的操作系统，开源免费，一般运行在智能手机"
-            break
-            ;;
-        "iOS")
-            echo "iOS是苹果开发的操作系统，闭源收费，一般运行在苹果智能手机"
-            break
-            ;;
-        *)
-            echo "输入错误，请重新输入"
-    esac
-done
-echo "You have selected $name"
-
 # ---------------- 循环
 
 # 1、while语句
@@ -425,3 +385,45 @@ get_file_size() {
 echo "$0" # /Users/zhushanbo/Desktop/Test/TestShell/TestShell.sh
 size=$(get_file_size "$0") # 调用函数并捕获echo输出
 echo "File size: $size bytes"
+
+## 九、main函数命令行参数
+
+# 1、select语句
+read -rp "请输入a的值:" a # 从键盘读取数据赋值给a，按Ctrl+D组合键结束读取
+read -rp "请输入b的值:" b
+if ((a == b)); then # ;分号是命令连接符，多个命令写在同一行需要加分号，写在不同行不需要加
+    echo "a和b相等!"
+else
+    echo "a和b不相等!"
+fi
+
+echo "what is your favourite OS?"
+select name in "Linux" "Windows" "Mac OS" "Android" "iOS"
+do
+    echo "$name"
+    case $name in # select一般与case搭配使用
+        "Linux")
+            echo "Linux是一个类UNIX操作系统，开源免费，一般运行在服务器和嵌入式设备"
+            break # 此break是跳出select语句，并不是跳出case语句，;;跳出case语句
+            ;;
+        "Windows")
+            echo "Windows是微软开发的操作系统，闭源收费，一般运行在个人电脑"
+            break
+            ;;
+        "Mac OS")
+            echo "Mac OS是苹果基于UNIX开发的操作系统，闭源收费，一般运行在苹果个人电脑"
+            break
+            ;;
+        "Android")
+            echo "Android是谷歌开发的操作系统，开源免费，一般运行在智能手机"
+            break
+            ;;
+        "iOS")
+            echo "iOS是苹果开发的操作系统，闭源收费，一般运行在苹果智能手机"
+            break
+            ;;
+        *)
+            echo "输入错误，请重新输入"
+    esac
+done
+echo "You have selected $name"

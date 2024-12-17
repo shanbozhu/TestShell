@@ -327,7 +327,7 @@ function fn() {
 }
 fn hello world !
 
-# 3、break还可以后面加数字，跳出多层循环
+# 3、break后面还可以加数字，跳出多层循环
 i=0
 while ((++i)); do
     j=0
@@ -335,14 +335,11 @@ while ((++i)); do
         if ((i > 4)); then
             break 2
         fi
-        
         if ((j > 4)); then
             break
         fi
-        
         printf "%-4d" $((i * j))
     done
-    
     printf "\n"
 done
 
@@ -355,7 +352,6 @@ for ((i=1; i <= 5; i++)); do
         fi
         printf "%d * %d = %-4d" $i $j $((i * j))
     done
-    
     printf "hello\n"
 done
 

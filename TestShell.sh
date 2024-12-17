@@ -308,13 +308,13 @@ do
     echo "$filename"
 done
 
-function func() {
+function fn() {
     for str in "$@"
     do
         echo "$str"
     done
 }
-func hello world !
+fn hello world !
 
 # 3、break还可以后面加数字，跳出多层循环
 i=0

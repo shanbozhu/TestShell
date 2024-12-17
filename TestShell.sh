@@ -132,7 +132,7 @@ echo "$?" # 输出0，表示上一个命令执行成功，退出状态为0。上
 # 1、if语句
 num1=10
 num2=20
-if ((num1 > num2)); then
+if ((num1 > num2)); then # ;分号是命令连接符，多个命令写在同一行需要加分号，写在不同行不需要加
     echo "num1大于num2"
 else
     echo "num1小于或等于num2"
@@ -388,7 +388,7 @@ echo "File size: $size bytes"
 # 1、select语句
 read -rp "请输入a的值:" a # 从键盘读取数据赋值给a，按Ctrl+D组合键结束读取
 read -rp "请输入b的值:" b
-if ((a == b)); then # ;分号是命令连接符，多个命令写在同一行需要加分号，写在不同行不需要加
+if ((a == b)); then
     echo "a和b相等!"
 else
     echo "a和b不相等!"

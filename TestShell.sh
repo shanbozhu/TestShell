@@ -7,6 +7,14 @@ a=123 # 等号两边不能有空格
 echo "$a"
 readonly d=123 # 只读变量
 
+# 1)setter
+a=456
+# 2)getter
+echo "$a" # $等价于${}，表示取值
+echo "${a}"
+echo "`ls -l`" # ``等价于$()，表示执行命令并捕获echo输出
+echo "$(ls -l)"
+
 # 浮点型
 a=1.23
 echo "$a"
@@ -40,15 +48,7 @@ done
 # 字典
 # 无
 
-## 二、变量调用
 
-# 1)setter
-a=456
-# 2)getter
-echo "$a" # $等价于${}，表示取值
-echo "${a}"
-echo "`ls -l`" # ``等价于$()，表示执行命令并捕获输出
-echo "$(ls -l)"
 
 ## 三、特殊变量
 

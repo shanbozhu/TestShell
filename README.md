@@ -46,7 +46,7 @@ shell脚本中加`set -x`开头和`set +x`结尾，然后执行`bash x.sh`，中
 
 `bash -c "$(curl -fsSL http://x.sh)"`
 
-`-c`后面的字符串通常来自网络下载
+`-c`后面的字符串通常是网络下载的脚本
 
 ### 6. set命令常用选项
 

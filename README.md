@@ -20,6 +20,29 @@ shell有多种，常用shell有`bash`、`sh`、`zsh`等。
 
 `export PS4='+\e[01;32m[${BASH_SOURCE}:${FUNCNAME[0]}:${LINENO}]\e[00m '`
 
+示例：
+
+```
+#!/bin/bash -x
+
+echo "Top level"
+result=$(echo "Nested level")
+echo "Result: $result"
+```
+
+输出：
+
+```
++[./qiantao_g.sh::3] echo 'Top level'
+Top level
+++[./qiantao_g.sh::4] echo 'Nested level'
++[./qiantao_g.sh::4] result='Nested level'
++[./qiantao_g.sh::5] echo 'Result: Nested level'
+Result: Nested level
+```
+
+输出结果中：一个+号，表示当前命令是顶层执行的。多个+号，表示当前命令是在某种嵌套上下文（如命令替换、函数内部）中执行的。
+
 2. 打印部分执行过程
 
 shell脚本中加`set -x`开头和`set +x`结尾，然后执行`bash x.sh`，中间部分的代码打印执行过程

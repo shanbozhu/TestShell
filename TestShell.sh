@@ -38,11 +38,17 @@ echo "${a[@]}" # 独立输出所有元素
 a=(20 56 "hello world")
 echo "${a[*]}" # 整体输出所有元素
 
+# 1、直接遍历元素
 for element in "${a[@]}"; do
   echo "独立输出所有元素：$element" # 独立输出所有元素
 done
 for element in "${a[*]}"; do
   echo "整体输出所有元素：$element" # 整体输出所有元素
+done
+
+# 2、通过索引遍历元素
+for i in "${!a[@]}"; do
+    echo "Index $i: ${a[$i]}"
 done
 
 arr1=(29 100 13 8 91 44)
@@ -60,7 +66,38 @@ unset arr3[1] # 删除数组元素
 echo "${arr3[1]}"
 
 # 字典
-# 无
+# Bash本身并没有直接支持字典类型的数据结构，但可以通过关联数组（associative arrays）实现类似字典的功能。从Bash 4.0开始，支持关联数组。
+# 1、声明关联数组
+declare -A my_dict
+# 2、添加键值对
+my_dict["name"]="Alice"
+my_dict["age"]="25"
+my_dict["city"]="New York"
+# 3、访问键值
+echo "Name: ${my_dict["name"]}"
+echo "Age: ${my_dict["age"]}"
+echo "City: ${my_dict["city"]}"
+# 4、遍历所有键
+for key in "${!my_dict[@]}"; do
+    echo "$key: ${my_dict[$key]}"
+done
+# 5、遍历所有值
+for value in "${my_dict[@]}"; do
+    echo "$value"
+done
+# 6、获取键或值的数量
+echo "Number of entries: ${#my_dict[@]}"
+# 7、删除键值对
+unset my_dict["name"]
+# 8、删除整个字典
+unset my_dict
+# 9、判断键是否存在
+key="age"
+if [[ -v my_dict["$key"] ]]; then
+    echo "Key '$key' exists with value: ${my_dict["$key"]}"
+else
+    echo "Key '$key' does not exist"
+fi
 
 ## 二、特殊变量
 

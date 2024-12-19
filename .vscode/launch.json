@@ -10,6 +10,7 @@
             "name": "Bash-Debug (select script from list of sh files)",
             "cwd": "${workspaceFolder}",
             "program": "${command:SelectScriptName}",
+            "terminalKind": "integrated",
             "args": ["helloworld"]
         },
         {

@@ -483,4 +483,5 @@ do
             echo "输入错误，请重新输入"
     esac
 done
+# 下面可以继续使用name的值
 echo "You have selected $name"

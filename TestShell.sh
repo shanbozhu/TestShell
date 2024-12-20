@@ -110,11 +110,13 @@ fi
 
 ## 三、字符串操作
 
-# 1、字符串长度：${#string_name}
+# 1、长度（获取字符串长度）
+# ${#string_name}
 str="hello world"
 echo "${#str}"
 
-# 2、字符串拼接：${string_name1}${string_name2}
+# 2、拼接（将多个字符串拼接成一个字符串）
+# ${string_name1}${string_name2}
 str1=hello
 str2=world
 str3=${str1}${str2}
@@ -124,7 +126,7 @@ echo "----$str4" # ----hello world
 str5="${str1}""${str2}"
 echo "----$str5" # ----helloworld
 
-# 3、字符串截取
+# 3、切片（提取字符串的某一部分）
 str="hello world"
 # 3.1、${string: index: length}或${string: 0-index: length}
 echo "${str: 2: 5}" # 从左至右，从左0计数，索引从2开始，长度为5
@@ -137,6 +139,16 @@ echo "${str##*l}" # 截取最后一个*l右边的所有字符，*是通配符
 # 3.3、${string%substring*}或${string%%substring*}
 echo "${str%l*}" # 截取最后一个l*左边的所有字符，*是通配符
 echo "${str%%l*}" # 截取最前一个l*左边的所有字符，*是通配符
+
+# 4、查找（查找子字符串是否存在，返回布尔值或索引）
+# 5、替换（替换字符串中的某些内容）
+# 6、分割（根据某个分隔符将字符串拆分为列表）
+# 7、合并（将列表或其他序列合并成字符串）
+# 8、去除首尾空格和换行、制表符等
+# 9、大小写转换（转换字符串的大小写）
+# 10、对齐（调整字符串的显示对齐方式）
+# 11、判断（判断字符串是否满足某些条件）
+# 12、字符串翻转（反转字符串内容）
 
 ## 四、数据运算
 

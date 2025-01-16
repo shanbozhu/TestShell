@@ -1,6 +1,6 @@
 #!/bin/bash
 # usage:
-# ./mqrencode.sh args
+# ./mqrencode_old.sh args
 
 # 命令是否已安装
 cmd="qrencode"

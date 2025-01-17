@@ -36,8 +36,8 @@ fi
 if [[ -n "$1" ]]; then
     input="$1"
 else
-    #input=$(cat) # 将标准输入文件的数据整体读取出来。
-    read -r input # 从标准输入文件读取一行数据。
+    #input=$(cat) # 从标准输入文件读取全部数据到input变量。
+    read -r input # 从标准输入文件读取一行数据到input变量。
 fi
 
 # 确保传入参数不为空

@@ -32,14 +32,22 @@ if [[ ! -d "$prefix" ]]; then
   printf "目录 %s 创建成功。\n" "$prefix"
 fi
 
+# 如果$1不为空，直接使用$1，否则从标准输入文件读取
+if [[ -n "$1" ]]; then
+    input="$1"
+else
+    #input=$(cat) # 将标准输入文件的数据整体读取出来。
+    read -r input # 从标准输入文件读取一行数据。
+fi
+
 # 确保传入参数不为空
-if [[ -z "$1" ]]; then
+if [[ -z "$input" ]]; then
   printf "错误：未传入要生成二维码的内容。\n" >&2
   exit 1
 fi
 
 # 生成二维码
-if qrencode -o "$file_path" -s 10 -m 1 "$1"; then
+if qrencode -o "$file_path" -s 10 -m 1 "$input"; then
   printf "二维码生成成功，已自动打开保存的目录：%s\n" "$file_path"
 else
   printf "二维码生成失败，请检查输入内容。\n" >&2
